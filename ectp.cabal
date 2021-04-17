@@ -1,0 +1,45 @@
+cabal-version:      3.0
+name:               ectp
+version:            0.1.0.0
+
+-- A short (one-line) description of the package.
+synopsis: rational points on elliptic curve (experimental)
+
+-- A longer description of the package.
+-- description:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+
+-- The license under which the package is released.
+-- license:
+
+license:             MIT
+license-file:        LICENSE
+author:              attacker0211
+maintainer:          attacker0211@gmail.com
+-- copyright:
+-- category:
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+
+common ectp-shared
+  build-depends: base ^>=4.14.1.0, numeric-tools>=0.2
+  default-language: Haskell2010
+  default-extensions: BangPatterns,
+                      OverloadedStrings,
+                      FlexibleInstances
+
+library ectp-core
+  import: ectp-shared
+  exposed-modules: FiniteField.Cardinality, FiniteField.SatoTate
+  hs-source-dirs: src 
+
+executable test
+  import: ectp-shared
+  main-is: Main.hs
+  build-depends: ectp-core
+  hs-source-dirs: test/src
+  ghc-options: -threaded
+
+  
