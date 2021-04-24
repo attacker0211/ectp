@@ -1,0 +1,9 @@
+#!/usr/local/bin/sage -python
+from sage.all import *
+
+n = 199843247
+
+for b in range(1, int(sqrt(199843247) + 1)):
+    E = EllipticCurve(Integers(n),[0,0,0,b,-b])
+    P = E(1,1)
+    print(factorial(20)*P)
